@@ -1,0 +1,18 @@
+{
+    "version": "1.0",
+    "dataSrc": "https://opendata.ecdc.europa.eu/covid19/casedistribution/json/",
+    "token": "insert your token",
+    "adminRoleId": "insert default admin role id",
+    "prefix": "covid",
+    "cc": "POL",
+    "refreshTime": 30,
+    "messageTime": "12:00",
+    "messageChannelId": "insert default message channel id",
+    "botStatus": {
+        "type": "idle",
+        "name":"world collapse :(",
+        "activity": "WATCHING"
+    },
+
+    "debug": false
+}
