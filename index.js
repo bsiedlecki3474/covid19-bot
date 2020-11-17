@@ -157,16 +157,6 @@ client.on('message', message => {
     const method = cmd[1] ? getFunc(cmd[1]) : null;
 
     switch (fn.name) {
-        case 'clear':
-            if (message.member.roles.cache.has(cfg.adminRoleId)) {
-                async function clear() {
-                    message.delete()
-                    const limit = fn.args && fn.args.length === 1 && parseInt(fn.args[0]) < 99 ? parseInt(fn.args[0]) : 99;
-                    const fetched = await message.channel.messages.fetch({ limit })
-                    message.channel.bulkDelete(fetched)
-                }
-                clear();  
-            } break;
         case 'access':
             if (message.member.roles.cache.has(cfg.adminRoleId)) {
                 let rolename = message.guild.roles.cache.get(cfg.adminRoleId).name
@@ -192,12 +182,12 @@ client.on('message', message => {
         case 'help': help(); break;
         case 'prefix':
             if (!method || !method.name || method.name === 'show')
-                message.channel.send(`Current cfg.prefix: **${cfg.prefix}**\nChange cfg.prefix: \`${cfg.prefix}.cfg.prefix.change(newcfg.prefix)\``)
+                message.channel.send(`Current prefix: **${cfg.prefix}**\nChange prefix: \`${cfg.prefix}.prefix.change(newprefix)\``)
 
             else if (method.name === 'change' && method.args && method.args.length === 1)  {
                 let oldprefix = cfg.prefix
                 cfg.prefix = method.args[0]
-                message.channel.send(`cfg.prefix changed: **${oldprefix}** -> **${cfg.prefix} GMT**`)
+                message.channel.send(`Prefix changed: **${oldprefix}** -> **${cfg.prefix}**`)
             } break;
         case 'cc': 
             if (!method || !method.name) {
